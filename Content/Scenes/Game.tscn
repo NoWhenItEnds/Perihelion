@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0i4p8dg4gpyl"]
+[gd_scene load_steps=3 format=3 uid="uid://b0i4p8dg4gpyl"]
 
 [ext_resource type="Script" uid="uid://86dftu03om4u" path="res://Systems/Managers/GameManager.cs" id="1_8wdfg"]
+[ext_resource type="PackedScene" uid="uid://cn7ssn4b6text" path="res://Content/Prefabs/Debug/TransformHelper.tscn" id="2_cyyik"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_8wdfg")
+_helper = ExtResource("2_cyyik")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.2759259)

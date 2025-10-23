@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cn7ssn4b6text"]
+
+[ext_resource type="Material" uid="uid://ch417gu8gq8wh" path="res://Content/Materials/Debug/Material_Debug_Z.tres" id="1_3xret"]
+[ext_resource type="Script" uid="uid://y42swyec23sv" path="res://Systems/Types/Debug/TransformHelper.cs" id="1_7fpp1"]
+[ext_resource type="Material" uid="uid://dewp31eshk42u" path="res://Content/Materials/Debug/Material_Debug_X.tres" id="1_c1rbb"]
+[ext_resource type="Material" uid="uid://bio0d21sr43ui" path="res://Content/Materials/Debug/Material_Debug_Y.tres" id="1_eojpq"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_w2ka0"]
+top_radius = 0.01
+bottom_radius = 0.1
+height = 1.0
+
+[node name="TransformHelper" type="Node3D"]
+script = ExtResource("1_7fpp1")
+
+[node name="X" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5, 0, 0)
+mesh = SubResource("CylinderMesh_w2ka0")
+surface_material_override/0 = ExtResource("1_c1rbb")
+
+[node name="Y" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_w2ka0")
+surface_material_override/0 = ExtResource("1_eojpq")
+
+[node name="Z" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0.5)
+mesh = SubResource("CylinderMesh_w2ka0")
+surface_material_override/0 = ExtResource("1_3xret")
