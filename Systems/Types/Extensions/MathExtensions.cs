@@ -6,6 +6,10 @@ namespace Perihelion.Types.Extensions
     /// <summary> Helpful extensions to the math namespace. </summary>
     public static class MathExtensions
     {
+        /// <summary> The radius of Earth in km. </summary>
+        public static Double EARTH_RADIUS => 6378.0;
+
+
         /// <summary> Convert geographical coordinates to cartesian positions upon a unit sphere. </summary>
         /// <param name="latitudeDeg"> The north-south coordinate.</param>
         /// <param name="longitudeDeg"> The east-west coordinate. </param>
@@ -21,6 +25,25 @@ namespace Perihelion.Types.Extensions
             Double z = radius * Math.Cos(latitudeRad) * Math.Sin(longitudeRad);
 
             return new Vector3((Single)x, (Single)y, (Single)z);
+        }
+
+
+        /// <summary> Find the distance, in km, between to geographical positions. </summary>
+        /// <param name="coordinate0"> The starting coordinates. </param>
+        /// <param name="coordinate1"> The ending coordinates. </param>
+        /// <returns> The distance between the two points in km. </returns>
+        public static Double CalculateHaversineDistance(GeographicalCoordinate coordinate0, GeographicalCoordinate coordinate1)
+        {
+            Double dLat = Mathf.DegToRad(coordinate1.Latitude - coordinate0.Latitude);
+            Double dLon = Mathf.DegToRad(coordinate1.Longitude - coordinate0.Longitude);
+            Double dLat0 = Mathf.DegToRad(coordinate0.Latitude);
+            Double dLat1 = Mathf.DegToRad(coordinate1.Latitude);
+
+            Double a = Math.Pow(Math.Sin(dLat / 2), 2) +
+            Math.Pow(Math.Sin(dLon / 2), 2) *
+            Math.Cos(dLat0) * Math.Cos(dLat1);
+            Double c = 2 * Math.Asin(Math.Sqrt(a));
+            return EARTH_RADIUS * c;
         }
     }
 }
