@@ -1,9 +1,6 @@
 using Godot;
 using System;
 using Perihelion.Types.Singletons;
-using Perihelion.Types.Debug;
-using Perihelion.Types.Extensions;
-using Perihelion.Mesh;
 
 namespace Perihelion.Managers
 {
@@ -25,8 +22,6 @@ namespace Perihelion.Managers
 
         [Export] private PackedScene _helper;
 
-        private CelestialObject[] _objects;
-
 
         /// <inheritdoc/>
         public override void _Ready()
@@ -45,19 +40,6 @@ namespace Perihelion.Managers
                 instance.SetCustomText($"LAT: {coordinates[i].latitude:F2}, LON: {coordinates[i].longitude:F2}");
             }
             */
-
-            _objects = new CelestialObject[]
-            {
-                CelestialObject.MERCURY,
-                CelestialObject.VENUS,
-                CelestialObject.EARTH,
-                CelestialObject.MARS,
-                CelestialObject.JUPITER,
-                CelestialObject.SATURN,
-                CelestialObject.URANUS,
-                CelestialObject.NEPTUNE,
-                CelestialObject.PLUTO
-            };
         }
 
 
@@ -67,12 +49,6 @@ namespace Perihelion.Managers
             DateTimeOffset previousTime = CurrentTime;
             CurrentTime = CurrentTime.AddSeconds(delta * _timescale);
             GameTimeDelta = (CurrentTime.ToUnixTimeMilliseconds() - previousTime.ToUnixTimeMilliseconds()) * 0.001f;
-
-            foreach (CelestialObject obj in _objects)
-            {
-                Vector3 position = obj.CalculateCartesianPosition(CurrentTime);
-                DebugDraw3D.DrawSphere(position * 0.1f, 0.01f);
-            }
         }
     }
 }

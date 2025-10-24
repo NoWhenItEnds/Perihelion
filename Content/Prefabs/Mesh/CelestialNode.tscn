@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://coh1h4420fvlu"]
+
+[ext_resource type="Script" uid="uid://dw1yvp2diiir8" path="res://Systems/Mesh/Nodes/CelestialNode.cs" id="1_nnuk4"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_j7grf"]
+
+[node name="CelestialNode" type="Node3D" node_paths=PackedStringArray("_mesh", "_cameraPivot", "_cameraPosition")]
+script = ExtResource("1_nnuk4")
+_mesh = NodePath("MeshInstance3D")
+_cameraPivot = NodePath("Camera Pivot")
+_cameraPosition = NodePath("Camera Pivot/Camera Position")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_j7grf")
+
+[node name="Camera Pivot" type="Node3D" parent="."]
+
+[node name="Camera Position" type="Marker3D" parent="Camera Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

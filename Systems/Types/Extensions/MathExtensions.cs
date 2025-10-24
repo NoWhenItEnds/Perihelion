@@ -45,5 +45,17 @@ namespace Perihelion.Types.Extensions
             Double c = 2 * Math.Asin(Math.Sqrt(a));
             return EARTH_RADIUS * c;
         }
+
+
+        /// <summary> Convert km to astronomical units. </summary>
+        /// <param name="km"> The value to convert. </param>
+        /// <returns> The converted value in astronomical units. </returns>
+        public static Double KmToAu(Double km) => km * 6.68459e-9;
+
+
+        /// <summary> Convert astronomical units to km. </summary>
+        /// <param name="au"> The value to convert. </param>
+        /// <returns> The converted value in km. </returns>
+        public static Double AuToKm(Double au) => au / 6.68459e-9;
     }
 }

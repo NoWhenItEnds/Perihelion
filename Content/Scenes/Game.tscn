@@ -1,20 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0i4p8dg4gpyl"]
+[gd_scene load_steps=6 format=3 uid="uid://b0i4p8dg4gpyl"]
 
 [ext_resource type="Script" uid="uid://86dftu03om4u" path="res://Systems/Managers/GameManager.cs" id="1_8wdfg"]
 [ext_resource type="PackedScene" uid="uid://cn7ssn4b6text" path="res://Content/Prefabs/Debug/TransformHelper.tscn" id="2_cyyik"]
+[ext_resource type="Script" uid="uid://c55oh2lt1qvjy" path="res://Systems/Mesh/Nodes/CelestialNodeController.cs" id="3_j7grf"]
+[ext_resource type="PackedScene" uid="uid://coh1h4420fvlu" path="res://Content/Prefabs/Mesh/CelestialNode.tscn" id="4_5p3x2"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_cyyik"]
-radius = 0.005
-height = 0.009
+[sub_resource type="Environment" id="Environment_5p3x2"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_8wdfg")
-_timescale = 1200000.0
 _helper = ExtResource("2_cyyik")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5p3x2")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment"]
+omni_range = 100000000.0
+
+[node name="Celestial Controller" type="Node3D" parent="." node_paths=PackedStringArray("_camera")]
+script = ExtResource("3_j7grf")
+_nodePrefab = ExtResource("4_5p3x2")
+_camera = NodePath("../Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.2759259)
+fov = 90.0
 far = 500000.0
-
-[node name="Sun" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_cyyik")

@@ -28,6 +28,9 @@ namespace Perihelion.Mesh
         /// <summary> How long, in days, the object takes to complete an orbit. </summary>
         public Double OrbitalPeriod { get; private set; }
 
+        /// <summary> The radius of the object in km. </summary>
+        public Double Radius { get; private set; }
+
 
         /// <summary> A stellar object representing a location within space. </summary>
         /// <param name="id">The unique identifier or name of the object.</param>
@@ -37,7 +40,8 @@ namespace Perihelion.Mesh
         /// <param name="ascending">The longitude of the ascending node in degrees.</param>
         /// <param name="perihelion">The argument of perihelion in degrees.</param>
         /// <param name="period">How long, in days, the object takes to complete an orbit.</param>
-        public CelestialObject(String id, Double semiMajor, Double eccentricity, Double inclination, Double ascending, Double perihelion, Double period)
+        /// <param name="radius">The radius of the object in km.</param>
+        public CelestialObject(String id, Double semiMajor, Double eccentricity, Double inclination, Double ascending, Double perihelion, Double period, Double radius)
         {
             Id = id;
             SemiMajorAxis = semiMajor;
@@ -46,6 +50,7 @@ namespace Perihelion.Mesh
             Ascending = ascending;
             Perihelion = perihelion;
             OrbitalPeriod = period;
+            Radius = radius;
         }
 
 
@@ -99,30 +104,33 @@ namespace Perihelion.Mesh
 
 
         /// <summary> Construct the planet Mercury. </summary>
-        public static CelestialObject MERCURY => new CelestialObject("Mercury", 0.3870993, 0.20564, 7.0, 75.05, 48.33, 87.9090455);
+        public static CelestialObject SOL => new CelestialObject("Sol", 0, 0, 0, 0, 0, 0.00001, 695700);
+
+        /// <summary> Construct the planet Mercury. </summary>
+        public static CelestialObject MERCURY => new CelestialObject("Mercury", 0.3870993, 0.20564, 7.0, 75.05, 48.33, 87.9090455, 2439.7);
 
         /// <summary> Construct the planet Venus. </summary>
-        public static CelestialObject VENUS => new CelestialObject("Venus", 0.723336, 0.00678, 3.39, 76.64, 75.47, 224.5469999);
+        public static CelestialObject VENUS => new CelestialObject("Venus", 0.723336, 0.00678, 3.39, 76.64, 75.47, 224.5469999, 6051.8);
 
         /// <summary> Construct the planet Earth. </summary>
-        public static CelestialObject EARTH => new CelestialObject("Earth", 1.0, 0.01671, 0, 114.21, 102.94, 365.006351);
+        public static CelestialObject EARTH => new CelestialObject("Earth", 1.0, 0.01671, 0, 114.21, 102.94, 365.006351, 6378);
 
         /// <summary> Construct the planet Mars. </summary>
-        public static CelestialObject MARS => new CelestialObject("Mars", 1.52371, 0.09339, 1.85, 49.56, 336.04, 686.497767);
+        public static CelestialObject MARS => new CelestialObject("Mars", 1.52371, 0.09339, 1.85, 49.56, 336.04, 686.497767, 3389.5);
 
         /// <summary> Construct the planet Jupiter. </summary>
-        public static CelestialObject JUPITER => new CelestialObject("Jupiter", 5.2029, 0.0484, 1.3, 100.49, 273.66, 4329.854475);
+        public static CelestialObject JUPITER => new CelestialObject("Jupiter", 5.2029, 0.0484, 1.3, 100.49, 273.66, 4329.854475, 69911);
 
         /// <summary> Construct the planet Saturn. </summary>
-        public static CelestialObject SATURN => new CelestialObject("Saturn", 9.537, 0.0539, 2.49, 113.25, 339.42, 10748.33677);
+        public static CelestialObject SATURN => new CelestialObject("Saturn", 9.537, 0.0539, 2.49, 113.25, 339.42, 10748.33677, 58232);
 
         /// <summary> Construct the planet Uranus. </summary>
-        public static CelestialObject URANUS => new CelestialObject("Uranus", 19.189, 0.04726, 0.77, 73.14, 312.01, 30666.14879);
+        public static CelestialObject URANUS => new CelestialObject("Uranus", 19.189, 0.04726, 0.77, 73.14, 312.01, 30666.14879, 25362);
 
         /// <summary> Construct the planet Neptune. </summary>
-        public static CelestialObject NEPTUNE => new CelestialObject("Neptune", 30.0699, 0.00859, 1.77, 131.78, 280.87, 60148.8318);
+        public static CelestialObject NEPTUNE => new CelestialObject("Neptune", 30.0699, 0.00859, 1.77, 131.78, 280.87, 60148.8318, 24622);
 
         /// <summary> Construct the planet Pluto. </summary>
-        public static CelestialObject PLUTO => new CelestialObject("Pluto", 39.4821, 0.24883, 17.14, 110.3, 113.75, 90527.592);
+        public static CelestialObject PLUTO => new CelestialObject("Pluto", 39.4821, 0.24883, 17.14, 110.3, 113.75, 90527.592, 1188.3);
     }
 }
