@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dohs4t7dq6318"
-path="res://.godot/imported/CelestialObject_Moon.png-3bd885c31c0591238040bdca5eac92e1.ctex"
+uid="uid://bm1uhlqba6slk"
+path="res://.godot/imported/CelestialObject_Moon_Displacement.png-75e5350fbe8f1a8d3423a03924de60c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Content/Textures/CelestialObjects/CelestialObject_Moon.png"
-dest_files=["res://.godot/imported/CelestialObject_Moon.png-3bd885c31c0591238040bdca5eac92e1.ctex"]
+source_file="res://Content/Textures/CelestialObjects/CelestialObject_Moon_Displacement.png"
+dest_files=["res://.godot/imported/CelestialObject_Moon_Displacement.png-75e5350fbe8f1a8d3423a03924de60c5.ctex"]
 
 [params]
 
