@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CelestialObject" load_steps=2 format=3 uid="uid://cf7f7mi1h3swh"]
+
+[ext_resource type="Script" uid="uid://c71rmjhm7f02q" path="res://Systems/Mesh/Resources/CelestialObject.cs" id="1_seep5"]
+
+[resource]
+script = ExtResource("1_seep5")
+Id = "neptune"
+SemiMajorAxis = 30.07
+Eccentricity = 0.009
+Inclination = 1.77
+Ascending = 131.78
+Perihelion = 280.87
+OrbitalPeriod = 60148.832
+Radius = 24622.0
+metadata/_custom_type_script = "uid://c71rmjhm7f02q"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CelestialObject" load_steps=2 format=3 uid="uid://bp7fnwes4hbws"]
+
+[ext_resource type="Script" uid="uid://c71rmjhm7f02q" path="res://Systems/Mesh/Resources/CelestialObject.cs" id="1_2ai65"]
+
+[resource]
+script = ExtResource("1_2ai65")
+Id = "saturn"
+SemiMajorAxis = 9.537
+Eccentricity = 0.054
+Inclination = 2.49
+Ascending = 113.25
+Perihelion = 339.42
+OrbitalPeriod = 10748.337
+Radius = 58232.0
+metadata/_custom_type_script = "uid://c71rmjhm7f02q"

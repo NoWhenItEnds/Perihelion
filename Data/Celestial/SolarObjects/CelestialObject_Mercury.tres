@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CelestialObject" load_steps=2 format=3 uid="uid://c0bw16av0lnpg"]
+
+[ext_resource type="Script" uid="uid://c71rmjhm7f02q" path="res://Systems/Mesh/Resources/CelestialObject.cs" id="1_on4nu"]
+
+[resource]
+script = ExtResource("1_on4nu")
+Id = "mercury"
+SemiMajorAxis = 0.387
+Eccentricity = 0.206
+Inclination = 7.0
+Ascending = 75.05
+Perihelion = 48.33
+OrbitalPeriod = 87.909
+Radius = 2439.7
+metadata/_custom_type_script = "uid://c71rmjhm7f02q"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CelestialObject" load_steps=2 format=3 uid="uid://dfq2cu4rfffvx"]
+
+[ext_resource type="Script" uid="uid://c71rmjhm7f02q" path="res://Systems/Mesh/Resources/CelestialObject.cs" id="1_udcpr"]
+
+[resource]
+script = ExtResource("1_udcpr")
+Id = "jupiter"
+SemiMajorAxis = 5.203
+Eccentricity = 0.048
+Inclination = 1.3
+Ascending = 100.49
+Perihelion = 273.66
+OrbitalPeriod = 4329.854
+Radius = 69911.0
+metadata/_custom_type_script = "uid://c71rmjhm7f02q"

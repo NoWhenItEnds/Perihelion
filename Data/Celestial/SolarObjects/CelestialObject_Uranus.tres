@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CelestialObject" load_steps=2 format=3 uid="uid://ciojo4hji13jn"]
+
+[ext_resource type="Script" uid="uid://c71rmjhm7f02q" path="res://Systems/Mesh/Resources/CelestialObject.cs" id="1_2qwqk"]
+
+[resource]
+script = ExtResource("1_2qwqk")
+Id = "uranus"
+SemiMajorAxis = 19.189
+Eccentricity = 0.047
+Inclination = 0.77
+Ascending = 73.14
+Perihelion = 312.01
+OrbitalPeriod = 30666.149
+Radius = 25362.0
+metadata/_custom_type_script = "uid://c71rmjhm7f02q"

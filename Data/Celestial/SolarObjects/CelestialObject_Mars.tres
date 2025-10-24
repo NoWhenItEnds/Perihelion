@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CelestialObject" load_steps=2 format=3 uid="uid://dxfx0j6no3x2i"]
+
+[ext_resource type="Script" uid="uid://c71rmjhm7f02q" path="res://Systems/Mesh/Resources/CelestialObject.cs" id="1_njsgi"]
+
+[resource]
+script = ExtResource("1_njsgi")
+Id = "mars"
+SemiMajorAxis = 1.524
+Eccentricity = 0.093
+Inclination = 1.85
+Ascending = 49.56
+Perihelion = 336.04
+OrbitalPeriod = 686.498
+Radius = 3389.5
+metadata/_custom_type_script = "uid://c71rmjhm7f02q"

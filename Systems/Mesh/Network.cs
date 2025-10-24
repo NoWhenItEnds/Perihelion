@@ -1,4 +1,5 @@
 using Godot;
+using Perihelion.Mesh.Resources;
 using Perihelion.Types.Extensions;
 using System;
 using System.Collections.Generic;

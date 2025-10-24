@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using Perihelion.Managers;
+using Perihelion.Mesh.Resources;
 using Perihelion.Types;
 using Perihelion.Types.Extensions;
 

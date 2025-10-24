@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using Godot;
+using Perihelion.Managers;
+using Perihelion.Mesh.Resources;
 using Perihelion.Types;
 using Perihelion.Types.Singletons;
 
@@ -19,6 +22,9 @@ namespace Perihelion.Mesh.Nodes
         [Export] private Camera3D _camera;
 
 
+        /// <summary> A reference to the resource manager singleton. </summary>
+        private ResManager _resourceManager;
+
         /// <summary> The object pool representing the celestial objects within the game world. </summary>
         private ObjectPool<CelestialNode> _objectPool;
 
@@ -32,19 +38,20 @@ namespace Perihelion.Mesh.Nodes
         /// <inheritdoc/>
         public override void _Ready()
         {
+            _resourceManager = ResManager.Instance;
             _objectPool = new ObjectPool<CelestialNode>(this, _nodePrefab);
 
             // Populate the solar system.
-            _celestialObjects.Add(CelestialObject.SOL);
-            _celestialObjects.Add(CelestialObject.MERCURY);
-            _celestialObjects.Add(CelestialObject.VENUS);
-            _celestialObjects.Add(CelestialObject.EARTH);
-            _celestialObjects.Add(CelestialObject.MARS);
-            _celestialObjects.Add(CelestialObject.JUPITER);
-            _celestialObjects.Add(CelestialObject.SATURN);
-            _celestialObjects.Add(CelestialObject.URANUS);
-            _celestialObjects.Add(CelestialObject.NEPTUNE);
-            _celestialObjects.Add(CelestialObject.PLUTO);
+            _celestialObjects.Add(_resourceManager.GetCelestialObject("sol"));
+            _celestialObjects.Add(_resourceManager.GetCelestialObject("mercury"));
+            _celestialObjects.Add(_resourceManager.GetCelestialObject("venus"));
+            _celestialObjects.Add(_resourceManager.GetCelestialObject("earth"));
+            _celestialObjects.Add(_resourceManager.GetCelestialObject("mars"));
+            _celestialObjects.Add(_resourceManager.GetCelestialObject("jupiter"));
+            _celestialObjects.Add(_resourceManager.GetCelestialObject("saturn"));
+            _celestialObjects.Add(_resourceManager.GetCelestialObject("uranus"));
+            _celestialObjects.Add(_resourceManager.GetCelestialObject("neptune"));
+            _celestialObjects.Add(_resourceManager.GetCelestialObject("pluto"));
 
             foreach (CelestialObject data in _celestialObjects)
             {
@@ -59,13 +66,13 @@ namespace Perihelion.Mesh.Nodes
         /// <summary> Get a reference to the celestial object from its unique id. </summary>
         /// <param name="id"> The unique id of the celestial object to search for. </param>
         /// <returns> A reference to the data object, or a null if one couldn't be found. </returns>
-        public CelestialObject? GetCelestialObjectById(String id) => _celestialObjects.FirstOrDefault(x => x.Id.ToUpper() == id.ToUpper()) ?? null;
+        public CelestialObject? GetCelestialObjectById(String id) => _celestialObjects.FirstOrDefault(x => x.Id.ToLower() == id.ToLower()) ?? null;
 
 
         /// <summary> Get a reference to the celestial node from its unique id. </summary>
         /// <param name="id"> The unique id of the celestial object to search for. </param>
         /// <returns> A reference to the node in world space, or a null if one couldn't be found. </returns>
-        public CelestialNode? GetCelestialNodeById(String id) => _objectPool.GetActiveObjects().FirstOrDefault(x => x.Data.Id.ToUpper() == id.ToUpper()) ?? null;
+        public CelestialNode? GetCelestialNodeById(String id) => _objectPool.GetActiveObjects().FirstOrDefault(x => x.Data?.Id.ToLower() == id.ToLower()) ?? null;
 
 
         public override void _Input(InputEvent @event)
