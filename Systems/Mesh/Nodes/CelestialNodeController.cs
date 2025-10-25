@@ -68,6 +68,7 @@ namespace Perihelion.Mesh.Nodes
         public override void _PhysicsProcess(double delta)
         {
             _camera.GlobalPosition = CurrentSelection.GetCameraPosition();
+            _camera.GlobalRotation = CurrentSelection.GetCameraRotation();
         }
 
 

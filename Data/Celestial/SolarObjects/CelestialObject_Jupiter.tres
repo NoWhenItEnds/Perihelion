@@ -13,5 +13,7 @@ Ascending = 100.49
 Perihelion = 273.66
 OrbitalPeriod = 4329.854
 Radius = 69911.0
+Obliquity = 3.12
+RotationPeriod = 0.414
 MeshMaterial = ExtResource("1_1ejsp")
 metadata/_custom_type_script = "uid://c71rmjhm7f02q"

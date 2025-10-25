@@ -8,5 +8,7 @@ script = ExtResource("1_e0jde")
 Id = "sol"
 OrbitalPeriod = 0.001
 Radius = 695700.0
+Obliquity = 7.25
+RotationPeriod = 27.0
 MeshMaterial = ExtResource("1_8udn2")
 metadata/_custom_type_script = "uid://c71rmjhm7f02q"

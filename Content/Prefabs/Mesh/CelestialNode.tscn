@@ -4,10 +4,9 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_j7grf"]
 
-[node name="CelestialNode" type="Node3D" node_paths=PackedStringArray("_mesh", "_light", "_cameraPivot", "_cameraPosition")]
+[node name="CelestialNode" type="Node3D" node_paths=PackedStringArray("_mesh", "_cameraPivot", "_cameraPosition")]
 script = ExtResource("1_nnuk4")
 _mesh = NodePath("MeshInstance3D")
-_light = NodePath("")
 _cameraPivot = NodePath("Camera Pivot")
 _cameraPosition = NodePath("Camera Pivot/Camera Position")
 
@@ -15,6 +14,7 @@ _cameraPosition = NodePath("Camera Pivot/Camera Position")
 mesh = SubResource("SphereMesh_j7grf")
 
 [node name="Camera Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 
 [node name="Camera Position" type="Marker3D" parent="Camera Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

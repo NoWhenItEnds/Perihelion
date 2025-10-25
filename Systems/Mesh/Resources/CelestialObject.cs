@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Perihelion.Types.Extensions;
 
 namespace Perihelion.Mesh.Resources
 {
@@ -32,6 +33,12 @@ namespace Perihelion.Mesh.Resources
 
         /// <summary> The radius of the object in km. </summary>
         [Export] public Double Radius { get; private set; }
+
+        /// <summary> The object's axial tilt from its orbital plane in degrees. </summary>
+        [Export] public Double Obliquity { get; private set; }
+
+        /// <summary> How many earth days it takes for the object to complete a single rotation. </summary>
+        [Export] public Double RotationPeriod { get; private set;}
 
 
         /// <summary> The material to apply to the object's mesh. </summary>
@@ -81,6 +88,17 @@ namespace Perihelion.Mesh.Resources
             Double z = r * Mathf.Sin(arg) * Mathf.Sin(inclinationRad);
 
             return new Vector3((Single)x, (Single)y, (Single)z);
+        }
+
+
+        public Vector3 CalculateRotation(DateTimeOffset time)
+        {
+            DateTimeOffset j2000 = new DateTimeOffset(2000, 1, 1, 12, 0, 0, TimeSpan.Zero);
+            Double julianDays = (time - j2000).TotalDays; // Calculate the number of days since 2000.
+
+            Double fraction = julianDays / RotationPeriod;
+            Double spinAngle = MathExtensions.WrapValue(360.0 * fraction, 360.0);
+            return new Vector3((Single)Obliquity, 0f, (Single)spinAngle);
         }
 
 

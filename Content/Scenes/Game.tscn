@@ -20,6 +20,7 @@ sky = SubResource("Sky_md4fn")
 
 [node name="Game" type="Node"]
 script = ExtResource("1_8wdfg")
+_timescale = 120000.0
 _helper = ExtResource("2_cyyik")
 
 [node name="Managers" type="Node" parent="."]

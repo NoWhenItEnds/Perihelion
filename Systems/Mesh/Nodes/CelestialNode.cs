@@ -68,6 +68,7 @@ namespace Perihelion.Mesh.Nodes
             if (Data != null)
             {
                 Position = Data.CalculateCartesianPosition(_gameManager.CurrentTime) * 100f;
+                _mesh.RotationDegrees = Data.CalculateRotation(_gameManager.CurrentTime);
             }
         }
 
@@ -90,6 +91,11 @@ namespace Perihelion.Mesh.Nodes
         /// <summary> Get the position of the camera in world space. </summary>
         /// <returns> The global position of the celestial node's camera point. </returns>
         public Vector3 GetCameraPosition() => _cameraPosition.GlobalPosition;
+
+
+        /// <summary> Get the rotation of the camera in world space. </summary>
+        /// <returns> The global rotation of the celestial node's camera point. </returns>
+        public Vector3 GetCameraRotation() => _cameraPosition.GlobalRotation;
 
 
         /// <inheritdoc/>

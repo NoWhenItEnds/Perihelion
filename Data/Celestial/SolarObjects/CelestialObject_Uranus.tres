@@ -13,5 +13,7 @@ Ascending = 73.14
 Perihelion = 312.01
 OrbitalPeriod = 30666.149
 Radius = 25362.0
+Obliquity = 97.86
+RotationPeriod = 0.718
 MeshMaterial = ExtResource("1_m4obc")
 metadata/_custom_type_script = "uid://c71rmjhm7f02q"
