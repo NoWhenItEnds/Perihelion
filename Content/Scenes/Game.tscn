@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0i4p8dg4gpyl"]
+[gd_scene load_steps=11 format=3 uid="uid://b0i4p8dg4gpyl"]
 
 [ext_resource type="Script" uid="uid://86dftu03om4u" path="res://Systems/Managers/GameManager.cs" id="1_8wdfg"]
 [ext_resource type="PackedScene" uid="uid://cn7ssn4b6text" path="res://Content/Prefabs/Debug/TransformHelper.tscn" id="2_cyyik"]
 [ext_resource type="Script" uid="uid://c55oh2lt1qvjy" path="res://Systems/Mesh/Nodes/CelestialNodeController.cs" id="3_j7grf"]
 [ext_resource type="Script" uid="uid://dnueisba0pbqr" path="res://Systems/Managers/ResManager.cs" id="3_sa7mi"]
 [ext_resource type="PackedScene" uid="uid://coh1h4420fvlu" path="res://Content/Prefabs/Mesh/CelestialNode.tscn" id="4_5p3x2"]
+[ext_resource type="Script" uid="uid://b8ayuwdlotrs2" path="res://Systems/Managers/InputManager.cs" id="4_8fov1"]
 [ext_resource type="Texture2D" uid="uid://jo1woubg6tgn" path="res://Content/Textures/Skybox_NightSky.exr" id="4_fdsh7"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8fov1"]
@@ -23,23 +24,26 @@ _helper = ExtResource("2_cyyik")
 
 [node name="Managers" type="Node" parent="."]
 
-[node name="ResourceManager" type="Node" parent="Managers"]
+[node name="Resource Manager" type="Node" parent="Managers"]
 script = ExtResource("3_sa7mi")
+
+[node name="Input Manager" type="Node" parent="Managers"]
+script = ExtResource("4_8fov1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5p3x2")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment"]
+shadow_enabled = true
 omni_range = 50000.0
 omni_attenuation = 0.0
 
 [node name="Celestial Controller" type="Node3D" parent="." node_paths=PackedStringArray("_camera")]
 script = ExtResource("3_j7grf")
 _nodePrefab = ExtResource("4_5p3x2")
-_camera = NodePath("../Camera3D")
+_camera = NodePath("MainCamera")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.2759259)
+[node name="MainCamera" type="Camera3D" parent="Celestial Controller"]
 fov = 60.0
 near = 0.03
 far = 500000.0

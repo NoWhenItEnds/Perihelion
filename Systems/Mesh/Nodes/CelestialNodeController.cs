@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Resources;
 using Godot;
 using Perihelion.Managers;
 using Perihelion.Mesh.Resources;
 using Perihelion.Types;
+using Perihelion.Types.Extensions;
 using Perihelion.Types.Singletons;
 
 namespace Perihelion.Mesh.Nodes
@@ -22,6 +22,10 @@ namespace Perihelion.Mesh.Nodes
         [Export] private Camera3D _camera;
 
 
+        /// <summary> The node that the player currently has selected. </summary>
+        public CelestialNode CurrentSelection { get; private set; }
+
+
         /// <summary> A reference to the resource manager singleton. </summary>
         private ResManager _resourceManager;
 
@@ -30,9 +34,6 @@ namespace Perihelion.Mesh.Nodes
 
         /// <summary> An array of the celestial objects that currently exist within the game world. </summary>
         private HashSet<CelestialObject> _celestialObjects = new HashSet<CelestialObject>();
-
-
-        private CelestialNode? _currentSelection = null;
 
 
         /// <inheritdoc/>
@@ -59,7 +60,32 @@ namespace Perihelion.Mesh.Nodes
                 current.Initialise(_objectPool, data);
             }
 
-            _currentSelection = GetCelestialNodeById("Sol");
+            CurrentSelection = GetCelestialNodeById("sol");
+        }
+
+
+        /// <inheritdoc/>
+        public override void _PhysicsProcess(double delta)
+        {
+            _camera.GlobalPosition = CurrentSelection.GetCameraPosition();
+        }
+
+
+        /// <summary> Sets the node the controller is currently focused upon. This is the one the player is observing. </summary>
+        /// <param name="relativeIndex"> The index relative to the current node to change focus to. </param>
+        public void SetCurrentFocus(Int32 relativeIndex)
+        {
+            CelestialNode[] allNodes = _objectPool.GetActiveObjects();
+            Int32 index = (Int32)MathExtensions.WrapValue(Array.FindIndex(allNodes, x => x == CurrentSelection) + relativeIndex, allNodes.Length);
+            SetCurrentFocus(allNodes[index]);
+        }
+
+
+        /// <summary> Sets the node the controller is currently focused upon. This is the one the player is observing. </summary>
+        /// <param name="node"> The node to change focus to. </param>
+        public void SetCurrentFocus(CelestialNode node)
+        {
+            CurrentSelection = node;
         }
 
 
@@ -73,45 +99,5 @@ namespace Perihelion.Mesh.Nodes
         /// <param name="id"> The unique id of the celestial object to search for. </param>
         /// <returns> A reference to the node in world space, or a null if one couldn't be found. </returns>
         public CelestialNode? GetCelestialNodeById(String id) => _objectPool.GetActiveObjects().FirstOrDefault(x => x.Data?.Id.ToLower() == id.ToLower()) ?? null;
-
-
-        public override void _Input(InputEvent @event)
-        {
-            if (_currentSelection != null)
-            {
-                if (@event is InputEventKey key && key.IsReleased())
-                {
-                    if (key.Keycode == Key.Space)
-                    {
-                        CelestialNode[] allNodes = _objectPool.GetActiveObjects();
-                        Int32 index = Array.FindIndex(allNodes, x => x == _currentSelection) + 1;
-                        if (index >= allNodes.Length)
-                        {
-                            index = 0;
-                        }
-                        _currentSelection = allNodes[index];
-
-                        GD.Print(_currentSelection.Data?.Id);
-                    }
-                    else if (key.Keycode == Key.Up)
-                    {
-                        _currentSelection.AlterCameraZoom(0.1f);
-                    }
-                    else if (key.Keycode == Key.Down)
-                    {
-                        _currentSelection.AlterCameraZoom(-0.1f);
-                    }
-
-                }
-            }
-        }
-
-        public override void _PhysicsProcess(double delta)
-        {
-            if (_currentSelection != null)
-            {
-                _camera.GlobalPosition = _currentSelection.GetCameraPosition();
-            }
-        }
     }
 }

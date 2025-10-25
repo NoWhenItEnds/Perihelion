@@ -10,6 +10,21 @@ namespace Perihelion.Types.Extensions
         public static Double EARTH_RADIUS => 6378.0;
 
 
+        /// <summary> Clamps an value and ensures it wraps. </summary>
+        /// <param name="value"> The value to wrap. </param>
+        /// <param name="max"> The maximum value before it wraps around from zero. </param>
+        /// <returns> The clamped value. </returns>
+        public static Double WrapValue(Double value, Double max)
+        {
+            Double remainder = value % max;
+            if (remainder < 0)
+            {
+                remainder += max;
+            }
+            return remainder;
+        }
+
+
         /// <summary> Convert geographical coordinates to cartesian positions upon a unit sphere. </summary>
         /// <param name="latitudeDeg"> The north-south coordinate.</param>
         /// <param name="longitudeDeg"> The east-west coordinate. </param>

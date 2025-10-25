@@ -34,6 +34,12 @@ namespace Perihelion.Mesh.Nodes
         /// <summary> The object's radius / size in au. </summary>
         private Single _size;
 
+        /// <summary> The minimum distance from the node the camera can be. </summary>
+        private Single _minZoom => _size + 0.001f;
+
+        /// <summary> The maximum distance from the node the camera can be. </summary>
+        private Single _maxZoom => _size * 1.5f;
+
 
         /// <inheritdoc/>
         public override void _Ready()
@@ -72,12 +78,12 @@ namespace Perihelion.Mesh.Nodes
 
 
         /// <summary> Alter how close the camera is to the node relative to its current position. </summary>
-        /// <param name="amount"> The amount to alter the position by. </param>
+        /// <param name="amount"> The amount to alter the position by as a percentage. </param>
         public void AlterCameraZoom(Single amount)
         {
-            Single trueAmount = Math.Clamp(_cameraPosition.Position.Z + amount, _size + 0.001f, _size * 1.5f);
+            Single actualAmount = (_maxZoom - _minZoom) * amount;
+            Single trueAmount = Math.Clamp(_cameraPosition.Position.Z + actualAmount, _minZoom, _maxZoom);
             _cameraPosition.Position = new Vector3(0f, 0f, trueAmount);
-            GD.Print($"{_mesh.Scale} || {_cameraPosition.Position.Z}");
         }
 
 
