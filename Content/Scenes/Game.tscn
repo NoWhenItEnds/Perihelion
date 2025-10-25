@@ -1,12 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0i4p8dg4gpyl"]
+[gd_scene load_steps=10 format=3 uid="uid://b0i4p8dg4gpyl"]
 
 [ext_resource type="Script" uid="uid://86dftu03om4u" path="res://Systems/Managers/GameManager.cs" id="1_8wdfg"]
 [ext_resource type="PackedScene" uid="uid://cn7ssn4b6text" path="res://Content/Prefabs/Debug/TransformHelper.tscn" id="2_cyyik"]
 [ext_resource type="Script" uid="uid://c55oh2lt1qvjy" path="res://Systems/Mesh/Nodes/CelestialNodeController.cs" id="3_j7grf"]
 [ext_resource type="Script" uid="uid://dnueisba0pbqr" path="res://Systems/Managers/ResManager.cs" id="3_sa7mi"]
 [ext_resource type="PackedScene" uid="uid://coh1h4420fvlu" path="res://Content/Prefabs/Mesh/CelestialNode.tscn" id="4_5p3x2"]
+[ext_resource type="Texture2D" uid="uid://jo1woubg6tgn" path="res://Content/Textures/Skybox_NightSky.exr" id="4_fdsh7"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8fov1"]
+panorama = ExtResource("4_fdsh7")
+
+[sub_resource type="Sky" id="Sky_md4fn"]
+sky_material = SubResource("PanoramaSkyMaterial_8fov1")
 
 [sub_resource type="Environment" id="Environment_5p3x2"]
+background_mode = 2
+sky = SubResource("Sky_md4fn")
 
 [node name="Game" type="Node"]
 script = ExtResource("1_8wdfg")
