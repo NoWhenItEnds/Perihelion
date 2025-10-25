@@ -34,6 +34,11 @@ namespace Perihelion.Mesh.Resources
         [Export] public Double Radius { get; private set; }
 
 
+        /// <summary> The material to apply to the object's mesh. </summary>
+        [ExportGroup("Resources")]
+        [Export] public Material MeshMaterial { get; private set; }
+
+
         /// <summary> A stellar object representing a location within space. </summary>
         public CelestialObject() {}
 

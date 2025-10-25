@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cphnjjol5v5y2"]
+
+[ext_resource type="Texture2D" uid="uid://dtirkkvxa61mx" path="res://Content/Textures/CelestialObjects/CelestialObject_Mercury_Albedo.jpg" id="1_cybwp"]
+
+[resource]
+albedo_texture = ExtResource("1_cybwp")
+heightmap_scale = 1.0

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CelestialObject" load_steps=2 format=3 uid="uid://ciojo4hji13jn"]
+[gd_resource type="Resource" script_class="CelestialObject" load_steps=3 format=3 uid="uid://ciojo4hji13jn"]
 
 [ext_resource type="Script" uid="uid://c71rmjhm7f02q" path="res://Systems/Mesh/Resources/CelestialObject.cs" id="1_2qwqk"]
+[ext_resource type="Material" uid="uid://412q6750yb52" path="res://Content/Materials/CelestialObjects/Material_CelestialObject_Uranus.tres" id="1_m4obc"]
 
 [resource]
 script = ExtResource("1_2qwqk")
@@ -12,4 +13,5 @@ Ascending = 73.14
 Perihelion = 312.01
 OrbitalPeriod = 30666.149
 Radius = 25362.0
+MeshMaterial = ExtResource("1_m4obc")
 metadata/_custom_type_script = "uid://c71rmjhm7f02q"

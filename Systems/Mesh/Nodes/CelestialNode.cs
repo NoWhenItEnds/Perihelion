@@ -31,6 +31,9 @@ namespace Perihelion.Mesh.Nodes
         /// <summary> A reference to the object pool that spawned this node. </summary>
         private ObjectPool<CelestialNode>? _objectPool = null;
 
+        /// <summary> The object's radius / size in au. </summary>
+        private Single _size;
+
 
         /// <inheritdoc/>
         public override void _Ready()
@@ -46,9 +49,10 @@ namespace Perihelion.Mesh.Nodes
         {
             _objectPool = objectPool;
             Data = data;
-            Single scale = (Single)(MathExtensions.KmToAu(Data.Radius) * 1000.0);
-            _mesh.Scale = Vector3.One * scale;
-            //_cameraPosition.Position = new Vector3(0f, 0f, scale);
+            _size = (Single)(MathExtensions.KmToAu(Data.Radius) * 10000.0);
+            _mesh.Scale = Vector3.One * _size;
+            _mesh.MaterialOverride = data.MeshMaterial;
+            _cameraPosition.Position = new Vector3(0f, 0f, _size * 1.5f);
         }
 
 
@@ -57,8 +61,23 @@ namespace Perihelion.Mesh.Nodes
         {
             if (Data != null)
             {
-                Position = Data.CalculateCartesianPosition(_gameManager.CurrentTime) * 1000f;
+                Position = Data.CalculateCartesianPosition(_gameManager.CurrentTime) * 100f;
             }
+        }
+
+
+        /// <summary> Rotate the camera pivot by the given offset in degrees. </summary>
+        /// <param name="rotation"> The rotation as euler degrees. </param>
+        public void RotateCameraPosition(Vector3 rotation) => _cameraPivot.RotationDegrees += rotation;
+
+
+        /// <summary> Alter how close the camera is to the node relative to its current position. </summary>
+        /// <param name="amount"> The amount to alter the position by. </param>
+        public void AlterCameraZoom(Single amount)
+        {
+            Single trueAmount = Math.Clamp(_cameraPosition.Position.Z + amount, _size + 0.001f, _size * 1.5f);
+            _cameraPosition.Position = new Vector3(0f, 0f, trueAmount);
+            GD.Print($"{_mesh.Scale} || {_cameraPosition.Position.Z}");
         }
 
 
@@ -71,6 +90,7 @@ namespace Perihelion.Mesh.Nodes
         public void FreeObject()
         {
             Data = null;
+            _mesh.MaterialOverride = null;
             _objectPool?.FreeObject(this);
         }
     }

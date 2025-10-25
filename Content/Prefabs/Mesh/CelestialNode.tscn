@@ -4,9 +4,10 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_j7grf"]
 
-[node name="CelestialNode" type="Node3D" node_paths=PackedStringArray("_mesh", "_cameraPivot", "_cameraPosition")]
+[node name="CelestialNode" type="Node3D" node_paths=PackedStringArray("_mesh", "_light", "_cameraPivot", "_cameraPosition")]
 script = ExtResource("1_nnuk4")
 _mesh = NodePath("MeshInstance3D")
+_light = NodePath("")
 _cameraPivot = NodePath("Camera Pivot")
 _cameraPosition = NodePath("Camera Pivot/Camera Position")
 

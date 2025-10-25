@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CelestialObject" load_steps=2 format=3 uid="uid://dfq2cu4rfffvx"]
+[gd_resource type="Resource" script_class="CelestialObject" load_steps=3 format=3 uid="uid://dfq2cu4rfffvx"]
 
+[ext_resource type="Material" uid="uid://dc5ccalun4pr" path="res://Content/Materials/CelestialObjects/Material_CelestialObject_Jupiter.tres" id="1_1ejsp"]
 [ext_resource type="Script" uid="uid://c71rmjhm7f02q" path="res://Systems/Mesh/Resources/CelestialObject.cs" id="1_udcpr"]
 
 [resource]
@@ -12,4 +13,5 @@ Ascending = 100.49
 Perihelion = 273.66
 OrbitalPeriod = 4329.854
 Radius = 69911.0
+MeshMaterial = ExtResource("1_1ejsp")
 metadata/_custom_type_script = "uid://c71rmjhm7f02q"

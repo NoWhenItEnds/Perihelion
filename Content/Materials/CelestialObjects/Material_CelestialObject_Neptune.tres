@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d2u6pt30r0ph3"]
+
+[ext_resource type="Texture2D" uid="uid://b3t65b1866id" path="res://Content/Textures/CelestialObjects/CelestialObject_Neptune_Albedo.jpg" id="1_viyva"]
+
+[resource]
+albedo_texture = ExtResource("1_viyva")
+heightmap_scale = 1.0

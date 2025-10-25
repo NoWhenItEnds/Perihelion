@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CelestialObject" load_steps=2 format=3 uid="uid://c3efwf24aihhn"]
+[gd_resource type="Resource" script_class="CelestialObject" load_steps=3 format=3 uid="uid://c3efwf24aihhn"]
 
 [ext_resource type="Script" uid="uid://c71rmjhm7f02q" path="res://Systems/Mesh/Resources/CelestialObject.cs" id="1_1elxt"]
+[ext_resource type="Material" uid="uid://dx10bixs1xum8" path="res://Content/Materials/CelestialObjects/Material_CelestialObject_Venus.tres" id="1_2hqvt"]
 
 [resource]
 script = ExtResource("1_1elxt")
@@ -12,4 +13,5 @@ Ascending = 76.64
 Perihelion = 75.47
 OrbitalPeriod = 224.547
 Radius = 6051.8
+MeshMaterial = ExtResource("1_2hqvt")
 metadata/_custom_type_script = "uid://c71rmjhm7f02q"

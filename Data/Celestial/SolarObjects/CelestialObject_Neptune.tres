@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CelestialObject" load_steps=2 format=3 uid="uid://cf7f7mi1h3swh"]
+[gd_resource type="Resource" script_class="CelestialObject" load_steps=3 format=3 uid="uid://cf7f7mi1h3swh"]
 
+[ext_resource type="Material" uid="uid://d2u6pt30r0ph3" path="res://Content/Materials/CelestialObjects/Material_CelestialObject_Neptune.tres" id="1_3juvx"]
 [ext_resource type="Script" uid="uid://c71rmjhm7f02q" path="res://Systems/Mesh/Resources/CelestialObject.cs" id="1_seep5"]
 
 [resource]
@@ -12,4 +13,5 @@ Ascending = 131.78
 Perihelion = 280.87
 OrbitalPeriod = 60148.832
 Radius = 24622.0
+MeshMaterial = ExtResource("1_3juvx")
 metadata/_custom_type_script = "uid://c71rmjhm7f02q"

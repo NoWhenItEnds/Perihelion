@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CelestialObject" load_steps=2 format=3 uid="uid://caeuew1086gyp"]
+[gd_resource type="Resource" script_class="CelestialObject" load_steps=3 format=3 uid="uid://caeuew1086gyp"]
 
+[ext_resource type="Material" uid="uid://d1ihcx408f7vh" path="res://Content/Materials/CelestialObjects/Material_CelestialObject_Sol.tres" id="1_8udn2"]
 [ext_resource type="Script" uid="uid://c71rmjhm7f02q" path="res://Systems/Mesh/Resources/CelestialObject.cs" id="1_e0jde"]
 
 [resource]
@@ -7,4 +8,5 @@ script = ExtResource("1_e0jde")
 Id = "sol"
 OrbitalPeriod = 0.001
 Radius = 695700.0
+MeshMaterial = ExtResource("1_8udn2")
 metadata/_custom_type_script = "uid://c71rmjhm7f02q"

@@ -77,17 +77,39 @@ namespace Perihelion.Mesh.Nodes
 
         public override void _Input(InputEvent @event)
         {
-            if(@event is InputEventKey key && key.IsReleased() && key.Keycode == Key.Space)
+            if (_currentSelection != null)
             {
-                CelestialNode[] allNodes = _objectPool.GetActiveObjects();
-                Int32 index = Array.FindIndex(allNodes, x => x == _currentSelection) + 1;
-                if (index >= allNodes.Length)
+                if (@event is InputEventKey key && key.IsReleased())
                 {
-                    index = 0;
-                }
-                _currentSelection = allNodes[index];
+                    if (key.Keycode == Key.Space)
+                    {
+                        CelestialNode[] allNodes = _objectPool.GetActiveObjects();
+                        Int32 index = Array.FindIndex(allNodes, x => x == _currentSelection) + 1;
+                        if (index >= allNodes.Length)
+                        {
+                            index = 0;
+                        }
+                        _currentSelection = allNodes[index];
 
-                GD.Print(_currentSelection.Data.Id);
+                        GD.Print(_currentSelection.Data?.Id);
+                    }
+                    else if (key.Keycode == Key.Up)
+                    {
+                        _currentSelection.AlterCameraZoom(0.1f);
+                    }
+                    else if (key.Keycode == Key.Down)
+                    {
+                        _currentSelection.AlterCameraZoom(-0.1f);
+                    }
+
+                }
+            }
+        }
+
+        public override void _PhysicsProcess(double delta)
+        {
+            if (_currentSelection != null)
+            {
                 _camera.GlobalPosition = _currentSelection.GetCameraPosition();
             }
         }

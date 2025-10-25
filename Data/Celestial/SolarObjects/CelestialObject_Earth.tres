@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CelestialObject" load_steps=2 format=3 uid="uid://b6ywygmkg38r6"]
+[gd_resource type="Resource" script_class="CelestialObject" load_steps=3 format=3 uid="uid://b6ywygmkg38r6"]
 
+[ext_resource type="Material" uid="uid://cry7i4xs1ttcm" path="res://Content/Materials/CelestialObjects/Material_CelestialObject_Earth.tres" id="1_bdcte"]
 [ext_resource type="Script" uid="uid://c71rmjhm7f02q" path="res://Systems/Mesh/Resources/CelestialObject.cs" id="1_i21lr"]
 
 [resource]
@@ -11,4 +12,5 @@ Ascending = 114.21
 Perihelion = 102.94
 OrbitalPeriod = 365.006
 Radius = 6378.0
+MeshMaterial = ExtResource("1_bdcte")
 metadata/_custom_type_script = "uid://c71rmjhm7f02q"

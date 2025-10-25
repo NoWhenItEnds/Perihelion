@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CelestialObject" load_steps=2 format=3 uid="uid://ca6f3y5dnia4h"]
+[gd_resource type="Resource" script_class="CelestialObject" load_steps=3 format=3 uid="uid://ca6f3y5dnia4h"]
 
 [ext_resource type="Script" uid="uid://c71rmjhm7f02q" path="res://Systems/Mesh/Resources/CelestialObject.cs" id="1_0l4yt"]
+[ext_resource type="Material" uid="uid://cppgymong4mjb" path="res://Content/Materials/CelestialObjects/Material_CelestialObject_Pluto.tres" id="1_5dd56"]
 
 [resource]
 script = ExtResource("1_0l4yt")
@@ -12,4 +13,5 @@ Ascending = 110.3
 Perihelion = 113.75
 OrbitalPeriod = 90527.592
 Radius = 1188.3
+MeshMaterial = ExtResource("1_5dd56")
 metadata/_custom_type_script = "uid://c71rmjhm7f02q"

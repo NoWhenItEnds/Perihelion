@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cry7i4xs1ttcm"]
+
+[ext_resource type="Texture2D" uid="uid://blxso6wami2qc" path="res://Content/Textures/CelestialObjects/CelestialObject_Venus_Albedo.jpg" id="1_c3ock"]
+
+[resource]
+albedo_texture = ExtResource("1_c3ock")
+heightmap_scale = 1.0
